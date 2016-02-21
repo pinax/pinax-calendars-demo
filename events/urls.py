@@ -5,11 +5,17 @@ from django.views.generic import TemplateView
 
 from django.contrib import admin
 
+from .views import EventCreateView, EventUpdateView, EventDeleteView
+
 
 urlpatterns = [
     url(r"^$", TemplateView.as_view(template_name="homepage.html"), name="home"),
     url(r"^admin/", include(admin.site.urls)),
     url(r"^account/", include("account.urls")),
+
+    url(r"^events/$", EventCreateView.as_view(), name="event_create"),
+    url(r"^events/(?P<pk>\d+)/edit/$", EventUpdateView.as_view(), name="event_update"),
+    url(r"^events/(?P<pk>\d+)/delete/$", EventDeleteView.as_view(), name="event_delete"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

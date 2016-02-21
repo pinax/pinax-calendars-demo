@@ -1,0 +1,15 @@
+{% extends "site_base.html" %}
+
+{% load bootstrap %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-6">
+        <h1>Delete {{ event }}?</h1>
+        <form class="form" method="post" action=".">
+            {% csrf_token %}
+            <button class="btn btn-danger">Delete</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
