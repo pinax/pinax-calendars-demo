@@ -1,15 +1,18 @@
 from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
-from django.views.generic import TemplateView
 
 from django.contrib import admin
 
-from .views import EventCreateView, EventUpdateView, EventDeleteView
+from .views import EventCreateView, EventUpdateView, EventDeleteView, HomeView, DayView
 
 
 urlpatterns = [
-    url(r"^$", TemplateView.as_view(template_name="homepage.html"), name="home"),
+    url(r"^$", HomeView.as_view(), name="home"),
+
+    url(r"^(?P<year>\d{4})/(?P<month>\d{1,2})/$", HomeView.as_view(), name="monthly"),
+    url(r"^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/$", DayView.as_view(), name="daily"),
+
     url(r"^admin/", include(admin.site.urls)),
     url(r"^account/", include("account.urls")),
 

@@ -1,0 +1,16 @@
+{% extends "site_base.html" %}
+
+{% block body %}
+    <h1>{{ the_date }}</h1>
+    <ul>
+        {% for event in events %}
+            <li>
+                {% if request.user == event.created_by %}
+                    <a href="{% url "event_update" event.pk %}" class="btn btn-xs btn-link"><i class="fa fa-fw fa-pencil"></i></a>
+                    <a href="{% url "event_delete" event.pk %}" class="btn btn-xs btn-link"><i class="fa fa-fw fa-trash"></i></a>
+                {% endif %}
+                {{ event }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
