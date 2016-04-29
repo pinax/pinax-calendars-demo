@@ -131,7 +131,7 @@ INSTALLED_APPS = [
 
     # external
     "account",
-    "metron",
+    "pinax.webanalytics",
     "pinax.calendars",
     "pinax.eventlog",
 
