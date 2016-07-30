@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class Event(models.Model):
 
     title = models.CharField(max_length=100)
-    date = models.DateField()
+    date = models.DateTimeField()
     created_by = models.ForeignKey(User)
 
     def __str__(self):
