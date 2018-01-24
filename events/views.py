@@ -1,10 +1,16 @@
-from django.core.urlresolvers import reverse
 from django.shortcuts import redirect
-from django.views.generic import CreateView, UpdateView, DeleteView, TemplateView
+from django.urls import reverse
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    TemplateView,
+    UpdateView
+)
 
-from account.mixins import LoginRequiredMixin
 from pinax.calendars.adapters import EventAdapter
 from pinax.calendars.mixins import DailyMixin, MonthlyMixin
+
+from account.mixins import LoginRequiredMixin
 
 from .models import Event
 
