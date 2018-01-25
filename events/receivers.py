@@ -1,10 +1,14 @@
 from django.dispatch import receiver
 
-from account.signals import password_changed
-from account.signals import user_sign_up_attempt, user_signed_up
-from account.signals import user_login_attempt, user_logged_in
-
 from pinax.eventlog.models import log
+
+from account.signals import (
+    password_changed,
+    user_logged_in,
+    user_login_attempt,
+    user_sign_up_attempt,
+    user_signed_up
+)
 
 
 @receiver(user_logged_in)
